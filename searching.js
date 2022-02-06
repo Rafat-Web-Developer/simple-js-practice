@@ -23,5 +23,7 @@ function search(getProducts, searchText){
 }
 
 const getResult = search(products, 'watch');
-console.log(getResult);
+for (let i = 1; i < getResult.length; i++) {
+    console.log(getResult[i]);
+}
 console.log("If you went to buy this all products you need to pay : ",getResult[0].totalPrice);
