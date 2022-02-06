@@ -12,12 +12,19 @@ function printNumber(getStartingNumber, getEndingNumber){
 }
 
 // --Simple sum function program using recursion--
-function sum(getStartingNumber, getEndingNumber){
+function sumForword(getStartingNumber, getEndingNumber){
     if(getStartingNumber > getEndingNumber){
-        return 1;
+        return 0;
     }
-    console.log(getStartingNumber);
-    return getStartingNumber + sum(getStartingNumber + 1, getEndingNumber);
+    return getStartingNumber + sumForword(getStartingNumber + 1, getEndingNumber);
+}
+
+// --Simple sum function program using recursion--
+function sumReverse(getEndingNumber, getStartingNumber){
+    if(getStartingNumber > getEndingNumber){
+        return 0;
+    }
+    return getEndingNumber + sumReverse(--getEndingNumber, getStartingNumber);
 }
 
 // -----All Functions Are End Here-----
@@ -26,6 +33,15 @@ const startingNumber = 1;
 const endingNumber = 5;
 console.log("-----Print Number Program-----");
 printNumber(startingNumber, endingNumber);
-console.log("-----Sum Program-----");
-sum(startingNumber, endingNumber);
+console.log("-----Sum Program (Forword)-----");
+console.log(sumForword(startingNumber, endingNumber));
+console.log("-----Sum Program (Reverse)-----");
+console.log(sumReverse(endingNumber, startingNumber));
 
+// -----Details overview of recursion-----
+// 5 + sumReverse(4, 1)
+// 5 + 4 + sumReverse(3, 1)
+// 5 + 4 + 3 + sumReverse(2, 1)
+// 5 + 4 + 3 + 2 + sumReverse(1, 1)
+// 5 + 4 + 3 + 2 + 1 + sumReverse(0, 1)
+// 5 + 4 + 3 + 2 + 1 + 0 = 15
